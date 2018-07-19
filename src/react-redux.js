@@ -21,11 +21,11 @@ let connect = (mapStateToProps,mapDispatchToProps) => (Component) => {
         }
         constructor(props,context){
             super(props,context)
-            this.state = mapStateToProps(this.context.store.getState());
+            this.state = mapStateToProps(context.store.getState());
         }
         componentWillMount(){
             this.context.store.subscribe(()=>{
-                this.setState({...mapStateToProps(this.context.store.getState())})
+                this.setState(mapStateToProps(this.context.store.getState()))
             })
         }
         render(){
